@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body class="port grad bg-warning">
+    {%if messages%}
+    {%for m in messages%}
+         {%if m.level == DEFAULT_MESSAGE_LEVELS.ERROR%}
+         <div class="alert alert-danger alert-dismissible fade show" role="alert">
+          <strong>{{m}}</strong> 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+         {%endif%}
+         {%if m.level == DEFAULT_MESSAGE_LEVELS.SUCCESS%}
+         <div class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>{{m}}</strong> 
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>    
+         {%endif%} 
+    {%endfor%}
+{%endif%}
+ 
+      
+
+
+    <div class="container d-flex justify-content-center mt-5">
+        <div class="row">
+             <h2 class="text-center">REGISTER</h2>
+            <form action="" method="post">
+                {%csrf_token%}
+                {{form.as_p}}
+                <button type="submit">Register</button>
+            </form>
+            already have an account?<a href="{%url 'signin'%}">Login</a>    
+        </div>
+    
+    </div>
+    {%for m in messages%}
+         {{m}}
+    {%endfor%} 
+</body>
+</html>

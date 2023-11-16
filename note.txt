@@ -1,0 +1,81 @@
+to make query file->
+make any change you must migrate.
+step-1:
+python manage.py makemigrations
+to migrate ->
+step-2:
+python manage.py migrate
+
+
+
+
+install sql -> db.sqlite.py (right click) -> open db 
+-> open employeecrm(model) ->(right click) ->show table.
+
+orm query for creating a new record
+-> Modelname.objects.create(field_name)
+
+to create shell->
+python manage.py shell
+
+to exit from shell ->
+ctrl Z
+
+model forms uses when 
+
+for temp in data
+
+{%for temp in data%}
+display
+
+{{emp.name}}
+
+{% comment %} <h2>Employee List</h2>
+    {%for emp in data%}
+    <div>
+    {{emp.name}}
+    {{emp.email}}    
+    {{emp.department}}
+    </div>
+    
+    {%endfor%}
+        {% endcomment %}
+
+   <int:pk> -> is used to frind the particular object with id     
+
+   instance only add when it is model form
+   it work only when the form is model
+
+
+
+
+
+django messages
+java link.
+
+STATIC_ROOT = os.path.join(BASE_DIR,'static')
+
+
+git
+.....
+git -a
+
+
+
+
+
+
+
+@method_decorator(signin_required,name="dispatch")    
+-it can only be given to the inside operators,
+don't need for signin and signup
+
+class EmployeeListView(View):
+    def get(self,request,*args, **kwargs):
+        # if request.user.is_authenticated:
+        qs=Employee.objects.all()
+        return render(request,"emp_list.html",{"data":qs}) 
+        # else:
+            # messages.error(request,"Invalid session")
+            # return redirect("signin")
+    
